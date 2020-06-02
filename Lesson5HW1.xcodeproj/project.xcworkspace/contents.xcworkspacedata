@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/vaksakalov/Documents/SwiftBook-Webinars/Modul_2_14/Lesson5/PersonalQuiz/Lesson5HW1.xcodeproj">
+      location = "self:Lesson5HW1.xcodeproj">
    </FileRef>
 </Workspace>
