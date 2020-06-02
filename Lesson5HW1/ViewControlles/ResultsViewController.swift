@@ -19,12 +19,6 @@ class ResultsViewController: UIViewController {
     @IBOutlet var textLabel: UILabel!
     
     var answersChoosen: [Answer]!
-    var counterTypes : [AnimalType : Int] = [
-        .cat : 0,
-        .dog : 0,
-        .rabbit : 0,
-        .turtle : 0
-    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +26,13 @@ class ResultsViewController: UIViewController {
         updateUI()
     }
 
-    // Алексей, не нашел как цивилизованно вывести мордашку из AnimalType
-    // и ты не подсказал в чате
-    // Пришлось выкрутиться через switch
+
     private func updateUI() {
         let resultAnimalType = findResultAnimalType()
+
+/*      // Алексей, сразу не нашел как цивилизованно вывести мордашку из AnimalType
+        // и ты не подсказал в чате
+        // Пришлось выкрутиться через switch
         switch resultAnimalType {
         case .cat:
             resultLabel.text = "Вы - 🐱"
@@ -47,14 +43,26 @@ class ResultsViewController: UIViewController {
         case .rabbit:
             resultLabel.text = "Вы - 🐰"
         }
+*/
+        // Потом нашел параметр .rawValue и переделал поизящнее
+        resultLabel.text = "Вы - " + String(resultAnimalType.rawValue)
         textLabel.text = resultAnimalType.definition
     }
     
     private func findResultAnimalType() -> AnimalType {
+        var counterTypes : [AnimalType : Int] = [
+            .cat : 0,
+            .dog : 0,
+            .rabbit : 0,
+            .turtle : 0
+        ]
+
         answersChoosen.forEach { (answer) in
             counterTypes[answer.type]! += 1
         }
         
+/*
+        // Такая же история: сначала сделал классический алгоритм поиска наибольшего элемента
         var resultAnimalType = counterTypes.first!.key
         var maxValue = counterTypes.first!.value
         
@@ -66,7 +74,10 @@ class ResultsViewController: UIViewController {
             print("\(key): \(value)")
         }
         print("Result is \(resultAnimalType)")
+*/
         
+        // А потом нашел, что можно сделать .sorted и снова переделал
+        let resultAnimalType = counterTypes.sorted(by: { $0.value > $1.value}).first!.key
         return resultAnimalType
     }
     
