@@ -30,9 +30,11 @@ class ResultsViewController: UIViewController {
     private func updateUI() {
         let resultAnimalType = findResultAnimalType()
 
-/*      // Алексей, сразу не нашел как цивилизованно вывести мордашку из AnimalType
+/*
+        // Алексей, сразу не нашел как цивилизованно вывести мордашку из AnimalType
         // и ты не подсказал в чате
         // Пришлось выкрутиться через switch
+         
         switch resultAnimalType {
         case .cat:
             resultLabel.text = "Вы - 🐱"
@@ -63,6 +65,7 @@ class ResultsViewController: UIViewController {
         
 /*
         // Такая же история: сначала сделал классический алгоритм поиска наибольшего элемента
+         
         var resultAnimalType = counterTypes.first!.key
         var maxValue = counterTypes.first!.value
         
