@@ -31,7 +31,10 @@ class ResultsViewController: UIViewController {
         navigationItem.hidesBackButton = true
         updateUI()
     }
-    
+
+    // Алексей, не нашел как цивилизованно вывести мордашку из AnimalType
+    // и ты не подсказал в чате
+    // Пришлось выкрутиться через switch
     private func updateUI() {
         let resultAnimalType = findResultAnimalType()
         switch resultAnimalType {
